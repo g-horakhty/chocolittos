@@ -3,324 +3,468 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karina Shop | Pedido Online</title>
+    <title>Chocolittos | Páscoa</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         /* --- ESTILOS GERAIS --- */
-        :root { --bg-body: #fff9f6; --bg-arch: #f7c5ba; --text-brown: #8a5a44; --text-body: #5a5a5a; --white: #ffffff; }
+        :root { --bg-body: #fff9f6; --bg-arch: #f7c5ba; --text-brown: #8a5a44; --text-body: #5a5a5a; --white: #ffffff; --green: #25D366; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Lato', sans-serif; background-color: var(--bg-body); color: var(--text-body); padding-bottom: 80px; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Lato', sans-serif; background-color: var(--bg-body); color: var(--text-body); padding-bottom: 100px; }
         .cursive { font-family: 'Dancing Script', cursive; font-weight: 700; }
         
-        header { background-color: var(--white); padding: 20px 0; text-align: center; }
-        .logo { font-size: 3rem; color: var(--text-brown); }
+        header { background-color: var(--white); padding: 25px 0; text-align: center; border-bottom: 1px solid #eee; }
+        .logo { font-size: 3.5rem; color: var(--text-brown); line-height: 1.2; }
 
-        /* --- ARCOS COM IMAGEM NO MEIO --- */
+        /* --- ARCOS --- */
         .arches-section {
-            background-color: var(--white);
-            padding: 20px 20px 60px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+            background-color: var(--white); padding: 20px 20px 40px;
+            display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
         }
-        
         .arch-card {
-            width: 220px;
-            height: 300px;
-            background-color: var(--bg-arch);
-            /* O formato do arco */
-            border-radius: 110px 110px 0 0; 
-            
-            /* Centraliza tudo que está dentro */
-            display: flex;
-            flex-direction: column;
-            align-items: center;     /* Centraliza horizontalmente */
-            justify-content: center; /* Centraliza verticalmente */
-            text-align: center;
-            
-            text-decoration: none;
-            transition: 0.3s;
-            padding: 15px;
-            position: relative;
+            width: 140px; background-color: var(--bg-arch);
+            border-radius: 70px 70px 0 0; display: flex; flex-direction: column;
+            align-items: center; padding: 10px; padding-top: 15px; 
+            text-decoration: none; transition: 0.3s; cursor: pointer; height: 200px;
         }
-
-        .arch-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(138, 90, 68, 0.2); }
-
-        /* Estilo da Imagem no Meio do Arco */
+        .arch-card:hover { transform: translateY(-5px); background-color: #eebcb0; }
         .arch-img-center {
-            width: 140px;          /* Tamanho da imagem */
-            height: 140px;
-            object-fit: cover;     /* Corta a imagem para não esticar */
-            border-radius: 50%;    /* Deixa a imagem redonda */
-            border: 4px solid rgba(255,255,255,0.7); /* Borda branca elegante */
-            margin-bottom: 15px;   /* Espaço entre a imagem e o texto */
-            background-color: #eee;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 100px; height: 100px; object-fit: cover; border-radius: 50%;
+            border: 3px solid rgba(255,255,255,0.8); margin-bottom: 10px; background-color: #eee;
         }
-        
-        .arch-title { color: var(--text-brown); font-size: 1.3rem; margin-bottom: 5px; line-height: 1.1; }
-        .arch-text { font-size: 0.85rem; color: var(--white); font-weight: 700; }
+        .arch-title { color: var(--text-brown); font-size: 0.95rem; text-align: center; line-height: 1.1; }
+
+        /* --- NAVEGAÇÃO ROSA --- */
+        .pink-nav { background-color: var(--bg-arch); padding: 15px 0; margin-bottom: 30px; position: sticky; top: 0; z-index: 90; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .pink-nav ul { display: flex; justify-content: center; list-style: none; gap: 15px; flex-wrap: wrap; }
+        .pink-nav a { text-decoration: none; color: var(--white); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; text-shadow: 1px 1px 0 rgba(0,0,0,0.1); }
 
         /* --- PRODUTOS --- */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .intro-text { background-color: var(--white); padding: 0 20px 40px; text-align: center; max-width: 800px; margin: 0 auto; }
+        .section-header { margin-bottom: 20px; border-bottom: 2px solid #eee; margin-top: 40px; padding-bottom: 5px; }
+        .big-title { font-size: 2.2rem; color: var(--text-brown); }
         
-        .pink-nav { background-color: var(--bg-arch); padding: 15px 0; margin-bottom: 40px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .pink-nav ul { display: flex; justify-content: center; list-style: none; gap: 30px; flex-wrap: wrap; }
-        .pink-nav a { text-decoration: none; color: var(--white); font-weight: 700; text-transform: uppercase; text-shadow: 1px 1px 0 rgba(0,0,0,0.1); }
-
-        .section-header { text-align: left; margin-bottom: 30px; border-bottom: 2px solid #eee; }
-        .big-title { font-size: 3rem; color: var(--text-brown); }
-        
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; margin-bottom: 50px; }
-        
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
         .product-card {
-            background: var(--white); border: 1px solid #eee; border-radius: 8px;
-            display: flex; height: 180px; overflow: hidden;
+            background: var(--white); border: 1px solid #eee; border-radius: 10px;
+            padding: 20px; text-align: center; display: flex; flex-direction: column; justify-content: space-between;
         }
+        .p-name { font-size: 1.4rem; color: var(--text-brown); margin-bottom: 5px; }
+        .p-price { font-weight: bold; color: #555; font-size: 1.3rem; margin: 10px 0; }
         
-        .p-info { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
-        
-        /* Imagem do Produto via CSS (Background) */
-        .p-img-box {
-            width: 160px; height: 100%;
-            background-size: cover; background-position: center;
-            background-color: #eee;
-        }
-
-        .p-title { color: var(--text-brown); font-size: 1.3rem; margin-bottom: 5px; line-height: 1.1; }
-        .p-desc { font-size: 0.8rem; color: #666; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .p-price { font-weight: bold; color: #555; font-size: 1.1rem; }
-
-        /* BOTÕES */
         .btn-add {
-            background-color: var(--bg-arch); color: white; border: none; padding: 6px 15px; 
-            border-radius: 20px; cursor: pointer; margin-top: 5px; font-weight: bold; width: fit-content;
-            transition: 0.2s; font-size: 0.9rem;
+            background-color: var(--bg-arch); color: white; border: none; padding: 12px; 
+            border-radius: 25px; cursor: pointer; font-weight: bold; width: 100%;
+            font-size: 1rem; margin-top: 10px; transition: 0.2s;
         }
-        .btn-add:hover { background-color: #eebbba; transform: scale(1.05); }
+        .btn-add:hover { background-color: #dfa69a; transform: scale(1.02); }
 
-        /* CARRINHO */
-        .cart-btn-float {
-            position: fixed; bottom: 30px; right: 30px;
-            background-color: #25D366; color: white; padding: 15px 25px; border-radius: 50px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3); font-weight: bold; cursor: pointer; z-index: 1000;
-            display: flex; align-items: center; gap: 10px; font-size: 1.1rem; transition: 0.3s;
+        /* --- MODAL (JANELAS) --- */
+        .modal-overlay { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.6); z-index: 2000; 
+            justify-content: center; align-items: center; 
         }
-        .cart-btn-float:hover { transform: scale(1.1); }
+        .modal-box { 
+            background: white; width: 90%; max-width: 500px; padding: 25px; 
+            border-radius: 15px; position: relative; max-height: 90vh; overflow-y: auto; 
+        }
+        .close-modal { 
+            position: absolute; top: 15px; right: 20px; font-size: 2rem; 
+            cursor: pointer; color: #aaa; line-height: 20px;
+        }
+
+        /* --- OPÇÕES DE SABOR --- */
+        .option-group { margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px; text-align: left; }
+        .option-title { font-weight: bold; color: var(--text-brown); display: block; margin-bottom: 8px; font-size: 1.1rem; }
+        .checkbox-label { display: flex; align-items: center; margin-bottom: 8px; cursor: pointer; color: #444; }
+        .checkbox-label input { margin-right: 10px; transform: scale(1.2); }
+        .price-tag { color: #d32f2f; font-weight: bold; font-size: 0.8rem; margin-left: 5px; }
+
+        .modal-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 10px; border-top: 2px solid #eee; }
+        .total-display { font-size: 1.5rem; font-weight: bold; color: var(--green); }
+        .btn-confirm { background-color: var(--green); color: white; padding: 10px 25px; border-radius: 8px; border: none; font-weight: bold; font-size: 1rem; cursor: pointer; }
+
+        /* --- CARRINHO FLUTUANTE --- */
+        .cart-float {
+            position: fixed; bottom: 20px; right: 20px;
+            background-color: var(--green); color: white; padding: 15px 25px; 
+            border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+            font-weight: bold; cursor: pointer; z-index: 1000;
+            display: flex; align-items: center; gap: 10px; font-size: 1.1rem;
+        }
         .cart-count { background: red; color: white; padding: 2px 8px; border-radius: 50%; font-size: 0.8rem; }
 
-        /* MODAL */
-        .cart-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center; }
-        .cart-box { background: white; width: 90%; max-width: 500px; padding: 30px; border-radius: 15px; position: relative; max-height: 80vh; overflow-y: auto; }
-        .close-cart { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #aaa; }
-        .cart-item { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 10px 0; }
-        .cart-total { font-size: 1.5rem; font-weight: bold; text-align: right; margin-top: 20px; color: var(--text-brown); }
-        .btn-whatsapp { background-color: #25D366; color: white; width: 100%; padding: 15px; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; margin-top: 20px; cursor: pointer; text-transform: uppercase; }
+        /* --- ITEM DO CARRINHO (LISTA) --- */
+        .cart-item { border-bottom: 1px solid #eee; padding: 15px 0; display: flex; justify-content: space-between; align-items: flex-start; }
+        .cart-info { text-align: left; flex: 1; }
+        .cart-details { font-size: 0.85rem; color: #777; margin-top: 5px; line-height: 1.4; }
+        .btn-remove { color: red; background: none; border: none; font-weight: bold; cursor: pointer; font-size: 1.2rem; margin-left: 10px; }
 
-        .developer-credit { text-align: center; padding: 30px 20px; font-size: 0.9rem; color: var(--text-brown); background-color: var(--bg-body); border-top: 1px solid rgba(138,90,68,0.1); margin-top: 40px; }
+        /* +18 */
+        #age-box { text-align: center; border: 3px solid var(--text-brown); }
+        .btn-yes { background: var(--text-brown); color: white; padding: 10px 30px; margin: 10px; border: none; border-radius: 5px; cursor: pointer; }
+        .btn-no { background: #ccc; padding: 10px 30px; margin: 10px; border: none; border-radius: 5px; cursor: pointer; }
 
-        @media (max-width: 768px) {
-            .product-grid { grid-template-columns: 1fr; }
-            .product-card { height: auto; flex-direction: row; }
-            .p-img-box { width: 120px; height: auto; min-height: 120px; }
-            .arches-section { flex-direction: column; align-items: center; }
+        /* --- RODAPÉ NOVO --- */
+        .store-footer {
+            background-color: var(--white);
+            border-top: 5px solid var(--bg-arch);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
         }
+        .store-footer p { margin: 5px 0; font-size: 1.1rem; color: var(--text-brown); }
+        .store-footer a { color: var(--text-brown); font-weight: bold; text-decoration: none; }
+        .store-footer a:hover { text-decoration: underline; }
+        .developer-credit { font-size: 0.8rem; color: #aaa; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px; display: inline-block; width: 100%; max-width: 600px; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo cursive">Karina Shop</div>
+        <div class="logo cursive">Chocolittos</div>
+        <p>Páscoa Artesanal 2026</p>
     </header>
 
     <section class="arches-section">
-        
-        <a href="#cat-congelados" class="arch-card">
-            <img src="img/arco_congelados.jpg" class="arch-img-center" alt="Congelados" onerror="this.style.opacity='0.3'">
-            
-            <h3 class="cursive arch-title">Congelados</h3>
-            <p class="arch-text">Praticidade no dia a dia</p>
-        </a>
-
-        <a href="#cat-bolos" class="arch-card">
-            <img src="img/arco_encomenda.jpg" class="arch-img-center" alt="Encomenda" onerror="this.style.opacity='0.3'">
-            
-            <h3 class="cursive arch-title">Encomendas</h3>
-            <p class="arch-text">Para momentos especiais</p>
-        </a>
-
-        <a href="#cat-sobremesas" class="arch-card">
-            <img src="img/arco_delivery.jpg" class="arch-img-center" alt="Delivery" onerror="this.style.opacity='0.3'">
-            
-            <h3 class="cursive arch-title">Delivery</h3>
-            <p class="arch-text">Receba em casa</p>
-        </a>
-
-        <div class="arch-card" style="justify-content: center; cursor: default; background: var(--bg-arch);">
-            <div style="text-align: center;">
-                <h2 class="cursive" style="font-size: 2rem; color: #fff;">Karina Shop<br>Itaí - SP</h2>
-            </div>
+        <div onclick="window.location.href='#cat-tradicional'" class="arch-card">
+            <img src="img/cat_tradicional.jpg" class="arch-img-center" onerror="this.src='https://via.placeholder.com/100'">
+            <span class="arch-title">Tradicional</span>
         </div>
-
+        <div onclick="window.location.href='#cat-trufado'" class="arch-card">
+            <img src="img/cat_trufado.jpg" class="arch-img-center" onerror="this.src='https://via.placeholder.com/100'">
+            <span class="arch-title">Trufado</span>
+        </div>
+        <div onclick="window.location.href='#cat-colher'" class="arch-card">
+            <img src="img/cat_colher.jpg" class="arch-img-center" onerror="this.src='https://via.placeholder.com/100'">
+            <span class="arch-title">Colher</span>
+        </div>
+        <div onclick="window.location.href='#cat-fitness'" class="arch-card">
+            <img src="img/cat_fitness.jpg" class="arch-img-center" onerror="this.src='https://via.placeholder.com/100'">
+            <span class="arch-title">Fitness</span>
+        </div>
+        <div onclick="checkAge()" class="arch-card" style="border: 2px solid var(--text-brown);">
+            <img src="img/cat_erotico.jpg" class="arch-img-center" onerror="this.src='https://via.placeholder.com/100'">
+            <span class="arch-title">Linha +18</span>
+        </div>
     </section>
-
-    <div class="intro-text">
-        <p>Karina Shop é referência em confeitaria artesanal em <strong>Itaí/SP</strong>. Produtos feitos com amor e ingredientes selecionados para adoçar sua vida.</p>
-    </div>
 
     <nav class="pink-nav">
         <ul>
-            <li><a href="#cat-bolos">Bolos Naked</a></li>
-            <li><a href="#cat-bento">Bento Cake</a></li>
-            <li><a href="#cat-sobremesas">Sobremesas</a></li>
-            <li><a href="#cat-congelados">Congelados</a></li>
+            <li><a href="#cat-tradicional">Tradicional</a></li>
+            <li><a href="#cat-trufado">Trufado</a></li>
+            <li><a href="#cat-colher">Colher</a></li>
+            <li><a href="#cat-fitness">Fitness</a></li>
+            <li><a href="javascript:checkAge()">+18</a></li>
         </ul>
     </nav>
 
-    <div class="container" id="main-content">
-        </div>
-    
-    <div style="height: 100px;"></div>
+    <div class="container" id="main-content"></div>
 
-    <div class="developer-credit">
-        <p>Site desenvolvido por <strong>Gabriel Horakhty© 2026 </strong> | Itaí - SP</p>
+    <footer class="store-footer">
+        <h3 class="cursive" style="font-size: 2.5rem; color: var(--text-brown); margin-bottom: 20px;">Chocolittos</h3>
+        
+        <p>📍 José Mitsuro Yassu, n° 115</p>
+        <p>CEP 18737-054 | Itaí - SP</p>
+        <br>
+        <p>📸 Siga-nos no Instagram:</p>
+        <p><a href="https://instagram.com/chocolittosvip" target="_blank" style="font-size: 1.2rem;">@chocolittosvip</a></p>
+
+        <div class="developer-credit">
+            Site desenvolvido por <strong>Gabriel Horakhty</strong> © 2026
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="options-modal">
+        <div class="modal-box">
+            <span class="close-modal" onclick="closeModal('options-modal')">&times;</span>
+            <h3 id="modal-title" class="cursive" style="font-size: 1.8rem; color: var(--text-brown);">Escolha os Sabores</h3>
+            <p style="color: #666; margin-bottom: 15px; font-size: 0.9rem;">Selecione abaixo as opções do seu ovo:</p>
+            
+            <div id="modal-body">
+                </div>
+
+            <div class="modal-footer">
+                <div>
+                    <small>Valor Total:</small><br>
+                    <span id="modal-price" class="total-display">R$ 0,00</span>
+                </div>
+                <button class="btn-confirm" onclick="finishItem()">Adicionar ✔</button>
+            </div>
+        </div>
     </div>
 
-    <div class="cart-btn-float" onclick="toggleCart()">
-        🛒 Ver Carrinho <span class="cart-count" id="cart-count">0</span>
+    <div class="modal-overlay" id="cart-modal">
+        <div class="modal-box">
+            <span class="close-modal" onclick="closeModal('cart-modal')">&times;</span>
+            <h2 class="cursive" style="color: var(--text-brown); text-align: center;">Seu Carrinho</h2>
+            
+            <div id="cart-list" style="margin-top: 20px; max-height: 300px; overflow-y: auto;">
+                </div>
+
+            <div style="text-align: right; font-weight: bold; font-size: 1.3rem; margin-top: 20px; color: var(--text-brown);">
+                Total: <span id="cart-total">R$ 0,00</span>
+            </div>
+            
+            <button onclick="sendToWhatsApp()" style="width: 100%; background: #25D366; color: white; padding: 15px; border: none; border-radius: 10px; font-weight: bold; margin-top: 20px; cursor: pointer; font-size: 1.1rem;">
+                Enviar Pedido no WhatsApp 📱
+            </button>
+        </div>
     </div>
 
-    <div class="cart-modal" id="cart-modal">
-        <div class="cart-box">
-            <span class="close-cart" onclick="toggleCart()">&times;</span>
-            <h2 class="cursive" style="color: var(--text-brown); margin-bottom: 20px;">Seu Pedido</h2>
-            <div id="cart-items-list"></div>
-            <div class="cart-total" id="cart-total-value">Total: R$ 0,00</div>
-            <button class="btn-whatsapp" onclick="checkoutWhatsApp()">Enviar no WhatsApp 📱</button>
+    <div class="modal-overlay" id="age-modal">
+        <div class="modal-box" id="age-box">
+            <h2 class="cursive" style="color: #d32f2f; font-size: 2rem;">Atenção +18</h2>
+            <p style="margin: 20px 0;">Esta categoria contém produtos eróticos.<br>Você confirma ser maior de 18 anos?</p>
+            <button class="btn-yes" onclick="confirmAge(true)">Sim, sou +18</button>
+            <button class="btn-no" onclick="confirmAge(false)">Não</button>
         </div>
+    </div>
+
+    <div class="cart-float" onclick="openCart()">
+        🛒 Ver Pedido <span class="cart-count" id="cart-counter">0</span>
     </div>
 
     <script>
-        const whatsappNumber = "5514999999999"; 
+        // CONFIGURAÇÃO DO WHATSAPP
+        const whatsappNumber = "5514996312002"; 
 
-        // LISTA DE PRODUTOS
-        // O Admin vai editar esta lista automaticamente
+        const flavorsSimple = ["Dois Amores", "Brigadeiro", "Prestígio", "M&M", "Mousse de Maracujá", "Mousse de Limão", "Mousse de Morango"];
+        const flavorsPremium = ["Kinder Bueno", "Ninho e Nutella", "Pistache", "Geleia de Morango c/ Ninho", "Surpresa de Uva", "Oreo", "Brigadeiro Gourmet", "Charge", "Chocolate Branco"];
+
+        // PRODUTOS
         const products = [
-            {
-                "id": 1,
-                "name": "Ninho & Nutella",
-                "category": "bolos",
-                "price": "195,00",
-                "desc": "Massa molhadinha com Ninho e Nutella pura.",
-                "img": "bolo_ninho.jpg"
-            },
-            {
-                "id": 2,
-                "name": "Bento Flork",
-                "category": "bento",
-                "price": "45,00",
-                "desc": "Bolinho na marmita com frase divertida.",
-                "img": "bento.jpg"
-            }
+            // Tradicional (Tem Casca)
+            { id: 1, cat: 'tradicional', name: 'Ovo Simples 250g', price: 42, shell: true },
+            { id: 2, cat: 'tradicional', name: 'Ovo Simples 350g', price: 52, shell: true },
+            { id: 3, cat: 'tradicional', name: 'Ovo Simples 500g', price: 80, shell: true },
+            // Trufado
+            { id: 4, cat: 'trufado', name: 'Ovo Trufado 350g', price: 62, shell: false },
+            { id: 5, cat: 'trufado', name: 'Ovo Trufado 500g', price: 90, shell: false },
+            { id: 6, cat: 'trufado', name: 'Ovo Trufado 1 Kg', price: 180, shell: false },
+            // Colher
+            { id: 7, cat: 'colher', name: 'Trio de Colher 250g', price: 55, shell: false },
+            { id: 8, cat: 'colher', name: 'Trio de Colher 350g', price: 68, shell: false },
+            // Fitness
+            { id: 9, cat: 'fitness', name: 'Fitness Colher 250g', price: 55, shell: false },
+            { id: 10, cat: 'fitness', name: 'Fitness Colher 350g', price: 68, shell: false },
+            // Erotico
+            { id: 11, cat: 'erotico', name: 'Ovo Erótico 350g', price: 70, shell: false },
+            { id: 12, cat: 'erotico', name: 'Ovo Erótico 500g', price: 92, shell: false }
         ];
 
         let cart = [];
+        let currentItem = null;
+        let isAdult = false;
 
-        function renderStore() {
+        // 1. RENDERIZAR A LOJA
+        function initStore() {
             const container = document.getElementById('main-content');
-            container.innerHTML = '';
-            
             const categories = [
-                { id: 'bolos', title: 'Bolos Naked' },
-                { id: 'bento', title: 'Bento Cakes' },
-                { id: 'sobremesas', title: 'Sobremesas' },
-                { id: 'congelados', title: 'Linha Congelados' }
+                { id: 'tradicional', name: 'Tradicional Simples' },
+                { id: 'trufado', name: 'Ovos Trufados' },
+                { id: 'colher', name: 'Ovos de Colher' },
+                { id: 'fitness', name: 'Linha Fitness' },
+                { id: 'erotico', name: 'Linha Erótica (+18)' }
             ];
 
             categories.forEach(cat => {
-                const catProducts = products.filter(p => p.category === cat.id);
-                if (catProducts.length > 0) {
-                    container.innerHTML += `
-                        <div id="cat-${cat.id}" style="margin-bottom: 50px;">
-                            <div class="section-header"><h2 class="cursive big-title">${cat.title}</h2></div>
-                            <div class="product-grid">
-                                ${catProducts.map(p => `
-                                    <div class="product-card">
-                                        <div class="p-info">
-                                            <h3 class="cursive p-title">${p.name}</h3>
-                                            <p class="p-desc">${p.desc}</p>
-                                            <div class="p-price">R$ ${p.price}</div>
-                                            <button class="btn-add" onclick="addToCart(${p.id})">+ Adicionar</button>
-                                        </div>
-                                        <div class="p-img-box" style="background-image: url('img/${p.img}');"></div>
-                                    </div>
-                                `).join('')}
+                const items = products.filter(p => p.cat === cat.id);
+                const displayStyle = (cat.id === 'erotico') ? 'display:none;' : '';
+                
+                if(items.length > 0) {
+                    let html = `<div id="cat-${cat.id}" style="${displayStyle} margin-bottom: 40px;">
+                        <div class="section-header"><h2 class="cursive big-title">${cat.name}</h2></div>
+                        <div class="product-grid">`;
+                    
+                    items.forEach(p => {
+                        html += `
+                        <div class="product-card">
+                            <div>
+                                <h3 class="cursive p-name">${p.name}</h3>
+                                <div class="p-price">R$ ${p.price.toFixed(2).replace('.', ',')}</div>
                             </div>
+                            <button class="btn-add" onclick="openOptions(${p.id})">Escolher Sabores</button>
                         </div>`;
+                    });
+
+                    html += `</div></div>`;
+                    container.innerHTML += html;
                 }
             });
         }
 
-        function addToCart(id) {
-            const product = products.find(p => p.id === id);
-            cart.push(product);
-            updateCartUI();
+        // 2. ABRIR JANELA DE OPÇÕES
+        function openOptions(id) {
+            currentItem = products.find(p => p.id === id);
+            if(!currentItem) return;
+
+            document.getElementById('modal-title').innerText = currentItem.name;
+            updatePriceDisplay(); 
+
+            const body = document.getElementById('modal-body');
+            body.innerHTML = '';
+
+            // Opção: CASCA (Se tiver)
+            if(currentItem.shell) {
+                body.innerHTML += `
+                <div class="option-group">
+                    <span class="option-title">Tipo de Casca:</span>
+                    <label class="checkbox-label"><input type="radio" name="opt_shell" value="Casca Lisa" checked> Simples (Lisa)</label>
+                    <label class="checkbox-label"><input type="radio" name="opt_shell" value="Casca Crocante"> Crocante</label>
+                </div>`;
+            }
+
+            // Opção: RECHEIOS SIMPLES
+            let htmlSimples = `<div class="option-group"><span class="option-title">Recheios Inclusos:</span>`;
+            flavorsSimple.forEach(f => {
+                htmlSimples += `<label class="checkbox-label"><input type="checkbox" name="opt_simple" value="${f}"> ${f}</label>`;
+            });
+            htmlSimples += `</div>`;
+            body.innerHTML += htmlSimples;
+
+            // Opção: RECHEIOS PREMIUM
+            let htmlPremium = `<div class="option-group"><span class="option-title">Recheios Premium (+ R$ 10,00):</span>`;
+            flavorsPremium.forEach(f => {
+                htmlPremium += `<label class="checkbox-label"><input type="checkbox" name="opt_premium" value="${f}" onchange="updatePriceDisplay()"> ${f} <span class="price-tag">+10,00</span></label>`;
+            });
+            htmlPremium += `</div>`;
+            body.innerHTML += htmlPremium;
+
+            // OBSERVAÇÃO
+            body.innerHTML += `
+                <div class="option-group" style="border:none;">
+                    <span class="option-title">Observações:</span>
+                    <input type="text" id="opt_obs" style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;" placeholder="Ex: Caprichar no laço...">
+                </div>
+            `;
+
+            document.getElementById('options-modal').style.display = 'flex';
+        }
+
+        // 3. ATUALIZAR PREÇO NO MODAL
+        function updatePriceDisplay() {
+            let total = currentItem.price;
+            const premiums = document.querySelectorAll('input[name="opt_premium"]:checked');
+            total += (premiums.length * 10);
+            document.getElementById('modal-price').innerText = "R$ " + total.toFixed(2).replace('.', ',');
+            return total;
+        }
+
+        // 4. CONFIRMAR E ADICIONAR AO CARRINHO
+        function finishItem() {
+            let desc = [];
             
-            const btn = event.target;
-            let originalText = btn.innerText;
-            btn.innerText = "✔";
-            btn.style.background = "#25D366";
-            setTimeout(() => { btn.innerText = originalText; btn.style.background = ""; }, 800);
+            const shell = document.querySelector('input[name="opt_shell"]:checked');
+            if(shell) desc.push(shell.value);
+
+            const simples = document.querySelectorAll('input[name="opt_simple"]:checked');
+            simples.forEach(el => desc.push(el.value));
+
+            const premiums = document.querySelectorAll('input[name="opt_premium"]:checked');
+            premiums.forEach(el => desc.push(el.value + " (Premium)"));
+
+            const obs = document.getElementById('opt_obs').value;
+            if(obs) desc.push(`Obs: ${obs}`);
+
+            if(simples.length === 0 && premiums.length === 0 && !shell) {
+                alert("Por favor, selecione ao menos um sabor ou casca.");
+                return;
+            }
+
+            const finalPrice = updatePriceDisplay();
+
+            cart.push({
+                name: currentItem.name,
+                price: finalPrice,
+                details: desc.join(', ')
+            });
+
+            closeModal('options-modal');
+            renderCart();
+            openCart();
         }
 
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            document.getElementById('cart-count').innerText = cart.length;
-            const list = document.getElementById('cart-items-list');
+        // 5. GERENCIAR CARRINHO
+        function renderCart() {
+            const list = document.getElementById('cart-list');
+            const totalEl = document.getElementById('cart-total');
+            const countEl = document.getElementById('cart-counter');
+            
             list.innerHTML = '';
             let total = 0;
 
             if(cart.length === 0) {
-                list.innerHTML = '<p style="text-align:center; color:#999; padding:20px;">Carrinho vazio.</p>';
+                list.innerHTML = '<p style="text-align:center; color:#999;">Seu carrinho está vazio.</p>';
             } else {
-                cart.forEach((item, index) => {
-                    let priceNum = parseFloat(item.price.replace(',', '.'));
-                    total += priceNum;
+                cart.forEach((item, idx) => {
+                    total += item.price;
                     list.innerHTML += `
-                        <div class="cart-item">
-                            <div><strong>${item.name}</strong><br><small>R$ ${item.price}</small></div>
-                            <button onclick="removeFromCart(${index})" style="background:none; border:none; color:red; font-weight:bold; cursor:pointer;">X</button>
-                        </div>`;
+                    <div class="cart-item">
+                        <div class="cart-info">
+                            <strong>${item.name}</strong>
+                            <div class="cart-details">${item.details}</div>
+                        </div>
+                        <div style="text-align:right;">
+                            <div style="font-weight:bold;">R$ ${item.price.toFixed(2).replace('.', ',')}</div>
+                            <button class="btn-remove" onclick="removeItem(${idx})">&times;</button>
+                        </div>
+                    </div>`;
                 });
             }
-            document.getElementById('cart-total-value').innerText = `Total: R$ ${total.toFixed(2).replace('.', ',')}`;
+
+            totalEl.innerText = "R$ " + total.toFixed(2).replace('.', ',');
+            countEl.innerText = cart.length;
         }
 
-        function toggleCart() {
-            const modal = document.getElementById('cart-modal');
-            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+        function removeItem(idx) {
+            cart.splice(idx, 1);
+            renderCart();
         }
 
-        function checkoutWhatsApp() {
+        function openCart() { document.getElementById('cart-modal').style.display = 'flex'; }
+        function closeModal(modalId) { document.getElementById(modalId).style.display = 'none'; }
+
+        // 6. ENVIAR WHATSAPP
+        function sendToWhatsApp() {
             if(cart.length === 0) return alert("Carrinho vazio!");
-            let msg = "*PEDIDO - KARINA SHOP* 🎂\n\n";
+            
+            let msg = "*PEDIDO PÁSCOA - CHOCOLITTOS* 🐰\n\n";
             let total = 0;
+            
             cart.forEach(item => {
-                msg += `▪ ${item.name} - R$ ${item.price}\n`;
-                total += parseFloat(item.price.replace(',', '.'));
+                msg += `🍫 *${item.name}* (R$ ${item.price.toFixed(2).replace('.', ',')})\n`;
+                msg += `   📝 ${item.details}\n\n`;
+                total += item.price;
             });
-            msg += `\n*TOTAL: R$ ${total.toFixed(2).replace('.', ',')}*`;
-            msg += `\n\nAguardo confirmação!`;
+            
+            msg += `--------------------------------\n`;
+            msg += `*TOTAL FINAL: R$ ${total.toFixed(2).replace('.', ',')}*\n`;
+            msg += `\nAguardo confirmação!`;
+
             window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        renderStore();
+        // 7. SISTEMA +18
+        function checkAge() {
+            if(isAdult) {
+                document.getElementById('cat-erotico').style.display = 'block';
+                window.location.href = '#cat-erotico';
+            } else {
+                document.getElementById('age-modal').style.display = 'flex';
+            }
+        }
+
+        function confirmAge(response) {
+            document.getElementById('age-modal').style.display = 'none';
+            if(response) {
+                isAdult = true;
+                checkAge();
+            }
+        }
+
+        initStore();
     </script>
 </body>
 </html>
